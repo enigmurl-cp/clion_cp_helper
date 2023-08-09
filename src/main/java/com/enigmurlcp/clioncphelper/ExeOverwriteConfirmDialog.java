@@ -1,3 +1,4 @@
+package com.enigmurlcp.clioncphelper;
 import com.intellij.openapi.project.Project;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;

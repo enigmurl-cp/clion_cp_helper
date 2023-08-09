@@ -1,3 +1,4 @@
+package com.enigmurlcp.clioncphelper;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SearchableConfigurable;
 import com.intellij.openapi.project.Project;

@@ -1,3 +1,4 @@
+package com.enigmurlcp.clioncphelper;
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
@@ -52,7 +53,9 @@ public class SingleFileExecutionAction extends AnAction {
         if (cmakelistFile == null) {
             /* CMakeLists.txt not exist */
             Notifications.Bus.notify (
-                    new Notification("singlefileexecutionaction", "Single File Execution Plugin", "Fail to access " + cmakelistFilePath, NotificationType.ERROR)
+                    new Notification("singlefileexecutionaction",
+                            "Single" +
+                            " File Execution Plugin", "Fail to access " + cmakelistFilePath, NotificationType.ERROR)
             );
             return;
         }
@@ -97,7 +100,10 @@ public class SingleFileExecutionAction extends AnAction {
             case EXE_NOT_EXIST:
                 insertAddExecutable(cmakelistDocument, exeName, relativeSourcePath);
                 Notifications.Bus.notify (
-                        new Notification("singlefileexecutionaction", "Single File Execution Plugin", "add_executable added for " + sourceName + ".", NotificationType.INFORMATION)
+                        new Notification("singlefileexecutionaction", "Single" +
+                                " File Execution Plugin", "add_executable " +
+                                "named " + exeName + ".",
+                                NotificationType.INFORMATION)
                 );
                 break;
             case EXE_EXIST_SAME_SOURCE:
@@ -206,9 +212,13 @@ public class SingleFileExecutionAction extends AnAction {
 
     /** build target exeName according based on the configuration */
     private String buildExeName(String exeName) {
+        String path =
+                new File(project.getBasePath()).toURI().relativize(new File(sourceFile.getPath()).toURI()).getPath();
+
         String newExeName;
         /* %FILENAME% replacement */
-        newExeName = exeName.replace(SingleFileExecutionConfig.EXECUTABLE_NAME_FILENAME, sourceFile.getNameWithoutExtension());
+        newExeName =
+                exeName.replace(SingleFileExecutionConfig.EXECUTABLE_NAME_FILENAME, path.replaceAll("\\W+", "_").toLowerCase());
         return newExeName;
     }
 

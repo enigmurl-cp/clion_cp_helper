@@ -1,3 +1,4 @@
+package com.enigmurlcp.clioncphelper;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
