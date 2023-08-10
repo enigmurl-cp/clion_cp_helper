@@ -218,7 +218,10 @@ public class SingleFileExecutionAction extends AnAction {
         String newExeName;
         /* %FILENAME% replacement */
         newExeName =
-                exeName.replace(SingleFileExecutionConfig.EXECUTABLE_NAME_FILENAME, path.replaceAll("\\W+", "_").toLowerCase());
+                exeName.replace(SingleFileExecutionConfig.EXECUTABLE_NAME_FILENAME,
+                        path
+                                .replaceFirst("\\.\\w*$","") // remove extensions
+                                .replaceAll("\\W+", "_").toLowerCase());
         return newExeName;
     }
 
